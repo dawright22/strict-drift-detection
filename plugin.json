@@ -1,0 +1,33 @@
+{
+  "name": "strict-drift-detection",
+  "description": "Deep, baseline-based configuration drift detection for Git-Ape deployments. Recursively diffs the full resolved Azure resource state (not just curated properties) against a captured baseline, with array-aware comparison, an ignore-list for volatile/computed fields, and a configurable severity-rules engine. Complements the git-ape azure-drift-detector skill.",
+  "version": "1.0.0",
+  "author": {
+    "name": "dawright22",
+    "url": "https://github.com/dawright22"
+  },
+  "homepage": "https://github.com/dawright22/strict-drift-detection",
+  "repository": "https://github.com/dawright22/strict-drift-detection",
+  "license": "MIT",
+  "keywords": [
+    "azure",
+    "drift-detection",
+    "configuration-drift",
+    "compliance",
+    "git-ape",
+    "iac",
+    "deep-diff",
+    "baseline"
+  ],
+  "prerequisites": {
+    "tools": {
+      "az": ">=2.58.0",
+      "jq": ">=1.6"
+    },
+    "plugins": {
+      "git-ape": ">=0.3.0"
+    }
+  },
+  "skills": "skills/",
+  "prompts": "prompts/"
+}
