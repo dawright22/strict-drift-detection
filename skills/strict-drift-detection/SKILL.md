@@ -36,6 +36,17 @@ Git-Ape's built-in `azure-drift-detector` skill compares a short, hardcoded list
 
 ## Procedure
 
+### 0. Confirm Before Running (REQUIRED)
+
+Never run this skill silently. Before any capture or diff, ask the user (use the `ask_user` tool if available) whether a strict check is needed, and wait for the answer:
+
+- State why it was suggested (e.g. standard `azure-drift-detector` reported no drift, pre-production gate, compliance audit).
+- Offer: **Run strict check** / **Run standard `azure-drift-detector` only** / **Skip**.
+- If the user has not explicitly asked for a deep/strict check, default to recommending the standard detector first.
+- Do not capture or refresh baselines (`--refresh-baseline`) without separate explicit confirmation, since it overwrites the existing baseline.
+
+Only continue to step 1 if the user chooses **Run strict check**.
+
 ### 1. Identify Target Deployment
 
 Same as `azure-drift-detector` — resolve `$DEPLOYMENT_ID` and confirm `.azure/deployments/$DEPLOYMENT_ID/metadata.json` exists. This skill reads the same `metadata.json` resource list (`managedResources[]` or legacy `resources[]`), so no extra setup is needed if git-ape already manages the deployment.
